@@ -93,4 +93,11 @@ body {
   .button:hover:enabled {
     background-color: #0056b3;
   }
+
+  .copy-btn {
+    color: white;
+    background-color: #2d2d2d;
+    width: auto;
+    height: auto;
+  }
   

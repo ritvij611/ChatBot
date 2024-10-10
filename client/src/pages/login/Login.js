@@ -28,7 +28,7 @@ const Login = () => {
       <label htmlFor="password">Password</label>
       <input type="password" id="password" name="password" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
     </div>
-    <button type="submit" disabled={loading}>
+    <button type="submit" disabled={loading} className='btn'>
         Login
     </button>
     <Link to='/signup'><h3>Don't have an account SignUp</h3></Link>

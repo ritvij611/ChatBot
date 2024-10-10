@@ -5,12 +5,12 @@ import toast from "react-hot-toast";
 const useLogout = () => {
 	const [loading, setLoading] = useState(false);
 	const { setAuthUser } = useAuthContext();
-	
+	const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
 
 	const logout = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("http://localhost:3000/auth/logout", {
+			const res = await fetch(`${backendUrl}/auth/logout`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 			});

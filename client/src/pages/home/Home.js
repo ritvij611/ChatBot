@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 import useLogout from '../../hooks/useLogout';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CopyToClipboard } from '../../components/CopyToClipboard';
 
 function Home() {
   const token = JSON.parse(localStorage.getItem("chat-user"));
@@ -12,6 +15,7 @@ function Home() {
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
 
+  
   // Fetch all chats when the component mounts
   useEffect(() => {
     const getAllChats = async () => {
@@ -87,8 +91,11 @@ function Home() {
       <div className="chat-container">
         {conversation.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
-            <strong>{msg.sender === 'user' ? 'You' : 'GPT'}:</strong>
-            <span>{msg.message}</span>
+            <strong id={`${index}`}>{msg.sender === 'user' ? 'You' : 'GPT'}:</strong>
+            {msg.sender!=='user' && <CopyToClipboard textData={msg.message} />}
+            <div>
+              <SyntaxHighlighter language={'python'} style={materialOceanic}>{msg.message}</SyntaxHighlighter>  
+            </div>
           </div>
         ))}
         <div ref={chatEndRef} />

@@ -5,14 +5,14 @@ import { useAuthContext } from "../context/AuthContext";
 const useSignup = () => {
 	const [loading, setLoading] = useState(false);
 	const { authUser, setAuthUser } = useAuthContext();
-
+	const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
 	const signup = async ({ fullName, username, password, confirmPassword }) => {
 		const success = handleInputErrors({ fullName, username, password, confirmPassword });
 		if (!success) return;
 
 		setLoading(true);
 		try {
-			const res = await fetch("http://localhost:3000/auth/signup", {
+			const res = await fetch(`${backendUrl}/auth/signup`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ fullName, username, password, confirmPassword}),

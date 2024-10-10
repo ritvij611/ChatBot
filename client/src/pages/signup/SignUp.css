@@ -41,7 +41,7 @@ body {
     font-size: 14px;
   }
   
-  button {
+  .btn {
     background-color: #ffcc00;
     border: 2px solid #000;
     padding: 12px;
@@ -51,7 +51,7 @@ body {
     font-size: 16px;
   }
   
-  button:hover {
+  .btn:hover {
     background-color: #ffeb3b;
   }
   
@@ -104,7 +104,7 @@ body {
     font-size: 14px;
   }
   
-  button {
+  .btn {
     background-color: #ffcc00;
     border: 2px solid #000;
     padding: 12px;
@@ -114,10 +114,10 @@ body {
     font-size: 16px;
   }
   
-  button:hover {
+  .btn:hover {
     background-color: #ffeb3b;
   }
-  .button:disabled {
+  .btn:disabled {
     background-color: #555;
     cursor: not-allowed;
   }
