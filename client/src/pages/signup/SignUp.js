@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSignup from '../../hooks/useSignUp';
+import './SignUp.css';
 
 const SignUp = () => {
     const [input, setInput] = useState({
@@ -37,10 +38,10 @@ const SignUp = () => {
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input type="password" id="password" name="confirmPassword" required value={input.confirmPassword} onChange={(e) => setInput({...input, confirmPassword:e.target.value})} />
         </div>
-        <button type="submit" disabled={loading} className='.btn'>
+        <button type="submit" disabled={loading} className='btn'>
         Sign Up
         </button>
-        <Link to='/login'><h3>Already have an account? Login</h3></Link>
+        <Link to='/login' className='linkLogin'><h3>Already have an account? Login</h3></Link>
       </form>
     </div>
       )
