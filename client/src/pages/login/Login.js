@@ -31,7 +31,7 @@ const Login = () => {
     <button type="submit" disabled={loading} className='btn'>
         Login
     </button>
-    <Link to='/signup'><h3>Don't have an account SignUp</h3></Link>
+    <Link to='/signup' className='linkLogin'><h3>Don't have an account SignUp</h3></Link>
   </form>
 </div>
   )

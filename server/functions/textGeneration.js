@@ -31,7 +31,8 @@ export const chat = async(req,res) => {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const result = await model.generateContent(prompt);
         
-        // console.log(result.response.text());
+        console.log(result.response);
+        console.log(result.response.candidates[0].content);
         const data = result.response.text();
         if(data){
             const newGPTresponse = new Message({

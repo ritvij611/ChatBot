@@ -4,6 +4,7 @@ import useLogout from '../../hooks/useLogout';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CopyToClipboard } from '../../components/CopyToClipboard';
+import { SpeakText } from '../../components/textToSpeech';
 
 function Home() {
   const token = JSON.parse(localStorage.getItem("chat-user"));
@@ -93,9 +94,13 @@ function Home() {
           <div key={index} className={`message ${msg.sender}`}>
             <strong id={`${index}`}>{msg.sender === 'user' ? 'You' : 'GPT'}:</strong>
             {msg.sender!=='user' && <CopyToClipboard textData={msg.message} />}
-            <div>
-              <SyntaxHighlighter language={'python'} style={materialOceanic}>{msg.message}</SyntaxHighlighter>  
-            </div>
+            <SpeakText textData={msg.message}/>
+            {msg.sender==='user'?<span>{msg.message}</span>
+            :
+              <div>
+                <SyntaxHighlighter language={'python'} style={materialOceanic}>{msg.message}</SyntaxHighlighter>  
+              </div>
+            }
           </div>
         ))}
         <div ref={chatEndRef} />
@@ -103,6 +108,7 @@ function Home() {
 
       {/* Input section */}
       <form onSubmit={(e) => {e.preventDefault()}}>
+        
       <textarea
         className="textarea"
         rows="4"
